@@ -1360,7 +1360,7 @@ class VmallocStater < Stater
     # [  223.198414] All test took worker0=441656368064 cycles
     when /Summary: (.+) passed: (.+) failed: (.+) repeat: (.+) loops: (.+) avg: (.+) usec/
       result = 'fail'
-      if $3.to_i == 0
+      if $3.to_i.zero?
         @tmp_stats["#{$1}.usec_per_loop"] = $6.to_i
         result = 'pass'
       end
